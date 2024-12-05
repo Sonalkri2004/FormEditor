@@ -18,13 +18,13 @@ export function FormHeader() {
         value={currentForm?.title || ''}
         onChange={(e) => handleChange('title', e.target.value)}
         placeholder="Form Title"
-        className="text-2xl font-bold w-full mb-2 bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-2 py-1"
+        className="text-2xl font-bold w-full mb-2 bg-transparent border-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-2 py-1"
       />
       <textarea
         value={currentForm?.description || ''}
         onChange={(e) => handleChange('description', e.target.value)}
         placeholder="Form Description"
-        className="text-gray-600 w-full resize-none bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-2 py-1"
+        className="text-gray-100 w-full resize-none bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-2 py-1"
         rows={2}
       />
     </div>

@@ -71,71 +71,72 @@ export function CategorizeContent({ question }) {
   };
 
   return (
-    <div className="mt-4 space-y-4">
-      <div className="flex gap-4 items-center">
-        <input
-          type="text"
-          value={newCategory}
-          onChange={(e) => setNewCategory(e.target.value)}
-          placeholder="Add new category"
-          className="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          onClick={handleAddCategory}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center gap-2"
-        >
-          <Plus size={20} />
-          Add Category
-        </button>
-      </div>
+    <div className="mt-4 space-y-4 text-gray-200">
+  <div className="flex flex-col sm:flex-row gap-4 items-center">
+    <input
+      type="text"
+      value={newCategory}
+      onChange={(e) => setNewCategory(e.target.value)}
+      placeholder="Add new category"
+      className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-200 placeholder-gray-400"
+    />
+    <button
+      onClick={handleAddCategory}
+      className="px-6 py-3 bg-gradient-to-r from-blue-400 to-purple-500 hover:from-purple-500 hover:to-blue-600 text-white rounded-lg flex items-center gap-2"
+    >
+      <Plus size={20} />
+      Add Category
+    </button>
+  </div>
 
-      <div className="flex gap-4 items-center">
-        <input
-          type="text"
-          value={newItem}
-          onChange={(e) => setNewItem(e.target.value)}
-          placeholder="Add new item"
-          className="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          onClick={handleAddItem}
-          className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center gap-2"
-        >
-          <Plus size={20} />
-          Add Item
-        </button>
-      </div>
+  <div className="flex flex-col sm:flex-row gap-4 items-center">
+    <input
+      type="text"
+      value={newItem}
+      onChange={(e) => setNewItem(e.target.value)}
+      placeholder="Add new item"
+      className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-200 placeholder-gray-400"
+    />
+    <button
+      onClick={handleAddItem}
+      className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 hover:from-blue-500 hover:to-green-600 text-white rounded-lg flex items-center gap-2"
+    >
+      <Plus size={20} />
+      Add Item
+    </button>
+  </div>
 
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <h3 className="font-semibold mb-2">Uncategorized Items</h3>
-            <div className="space-y-2">
-              {(question.items || [])
-                .filter(item => !item.category)
-                .map(item => (
-                  <DraggableItem key={item.id} id={item.id}>
-                    {item.content}
-                  </DraggableItem>
-                ))}
-            </div>
-          </div>
-
-          {(question.categories || []).map(category => (
-            <CategoryColumn
-              key={category}
-              category={category}
-              items={(question.items || []).filter(item => item.category === category)}
-              onRemove={() => handleRemoveCategory(category)}
-            />
-          ))}
+  <DndContext
+    sensors={sensors}
+    collisionDetection={closestCenter}
+    onDragEnd={handleDragEnd}
+  >
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="bg-gray-700 p-6 rounded-lg shadow-md">
+        <h3 className="font-semibold mb-4 text-gray-100">Uncategorized Items</h3>
+        <div className="space-y-4">
+          {(question.items || [])
+            .filter(item => !item.category)
+            .map(item => (
+              <DraggableItem key={item.id} id={item.id}>
+                {item.content}
+              </DraggableItem>
+            ))}
         </div>
-      </DndContext>
+      </div>
+
+      {(question.categories || []).map(category => (
+        <CategoryColumn
+          key={category}
+          category={category}
+          items={(question.items || []).filter(item => item.category === category)}
+          onRemove={() => handleRemoveCategory(category)}
+        />
+      ))}
     </div>
+  </DndContext>
+</div>
+
   );
 }
 

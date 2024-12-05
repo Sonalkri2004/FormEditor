@@ -22,7 +22,7 @@ export function QuestionCard({ question }) {
   };
 
   return (
-    <div className="border rounded-lg p-4 bg-white shadow-sm">
+    <div className="border rounded-lg p-4  shadow-sm">
       <div className="flex justify-between items-start mb-4">
         <div>
           <input
@@ -31,9 +31,9 @@ export function QuestionCard({ question }) {
             onChange={(e) =>
               updateQuestion(question.id, { ...question, title: e.target.value })
             }
-            className="text-lg font-semibold bg-transparent border-none focus:outline-none"
+            className="text-lg font-semibold text-white bg-transparent border-none focus:outline-none"
           />
-          <div className="text-sm text-gray-500">Type: {question.type}</div>
+          <div className="text-sm text-gray-200">Type: {question.type}</div>
         </div>
         <div className="flex gap-2">
           <label className="cursor-pointer">

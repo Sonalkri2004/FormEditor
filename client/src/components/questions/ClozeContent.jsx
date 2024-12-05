@@ -40,51 +40,50 @@ export function ClozeContent({ question }) {
   };
 
   return (
-    <div className="mt-4 space-y-4">
-      <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
-          Text Content
-        </label>
-        <textarea
-          value={text}
-          onChange={handleTextChange}
-          onMouseUp={handleWordSelect}
-          className="w-full h-32 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Enter your text here. Select words to convert them into blanks..."
-        />
-      </div>
+    <div className="mt-4 space-y-6 text-gray-200">
+  <div className="space-y-4">
+    <label className="block text-sm font-medium text-gray-300">Text Content</label>
+    <textarea
+      value={text}
+      onChange={handleTextChange}
+      onMouseUp={handleWordSelect}
+      className="w-full h-32 p-4 bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-200 placeholder-gray-400"
+      placeholder="Enter your text here. Select words to convert them into blanks..."
+    />
+  </div>
 
-      {selectedWord && (
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600">
-            Selected word: <strong>{selectedWord}</strong>
-          </span>
-          <button
-            onClick={handleCreateBlank}
-            className="px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center gap-1 text-sm"
-          >
-            <Plus size={16} />
-            Make Blank
-          </button>
-        </div>
-      )}
-
-      {question.blanks?.length > 0 && (
-        <div className="space-y-2">
-          <h4 className="font-medium text-gray-700">Answer Key:</h4>
-          <div className="flex flex-wrap gap-2">
-            {question.blanks.map((word, index) => (
-              <span
-                key={index}
-                className="px-3 py-1 bg-gray-100 rounded-full text-sm"
-              >
-                {word}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
+  {selectedWord && (
+    <div className="flex items-center gap-4">
+      <span className="text-sm text-gray-400">
+        Selected word: <strong>{selectedWord}</strong>
+      </span>
+      <button
+        onClick={handleCreateBlank}
+        className="px-6 py-3 bg-gradient-to-r from-blue-400 to-purple-500 hover:from-purple-500 hover:to-blue-600 text-white rounded-lg flex items-center gap-2 text-sm"
+      >
+        <Plus size={16} />
+        Make Blank
+      </button>
     </div>
+  )}
+
+  {question.blanks?.length > 0 && (
+    <div className="space-y-4">
+      <h4 className="font-medium text-gray-300">Answer Key:</h4>
+      <div className="flex flex-wrap gap-4">
+        {question.blanks.map((word, index) => (
+          <span
+            key={index}
+            className="px-4 py-2 bg-gray-700 rounded-full text-sm text-gray-200"
+          >
+            {word}
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+</div>
+
   );
 }
 

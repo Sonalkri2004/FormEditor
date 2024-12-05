@@ -10,7 +10,7 @@ export function CategoryColumn({ category, items, onRemove }) {
   });
 
   return (
-    <div className="bg-gray-50 p-4 rounded-lg">
+    <div className="bg-gray-700 p-4 rounded-lg">
       <div className="flex justify-between items-center mb-2">
         <h3 className="font-semibold">{category}</h3>
         <button
