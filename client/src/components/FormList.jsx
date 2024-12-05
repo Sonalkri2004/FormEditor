@@ -43,73 +43,92 @@ export function FormList() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">My Forms</h1>
-        <Link
-          to="/create"
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center gap-2 transition-colors"
-        >
-          <Plus size={20} />
-          Create Form
-        </Link>
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0">
+        {/* Glowing Elements */}
+        <div className="absolute top-10 left-20 w-96 h-96 bg-blue-700 opacity-20 blur-3xl rounded-full"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-600 opacity-25 blur-2xl rounded-full"></div>
+        <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-r from-indigo-500 to-teal-500 opacity-10 blur-3xl rounded-full"></div>
       </div>
 
-      <div className="grid gap-4">
-        {forms.map((form) => (
-          <div
-            key={form._id}
-            className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+      {/* Content Section */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16 text-gray-100">
+        {/* Header Section */}
+        <div className="flex justify-between items-center mb-12">
+          <h1 className="text-4xl font-extrabold">Forms</h1>
+          <Link
+            to="/create"
+            className="px-6 py-3 bg-gradient-to-r from-teal-400 to-blue-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 flex items-center gap-3"
           >
-            <div className="flex justify-between items-start">
-              <div>
-                <h2 className="text-xl font-semibold mb-2">{form.title}</h2>
-                <p className="text-gray-600">{form.description}</p>
+            <Plus size={24} />
+            <span>Create Form</span>
+          </Link>
+        </div>
+
+        {/* Forms Section */}
+        <div className="space-y-8">
+          {forms.map((form) => (
+            <div
+              key={form._id}
+              className="bg-gray-800 rounded-xl shadow-xl p-6 flex items-center justify-between hover:shadow-2xl transition-shadow duration-300 relative overflow-hidden"
+            >
+              {/* Accent Line */}
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-teal-400 to-blue-500"></div>
+
+              {/* Card Content */}
+              <div className="flex-1 pr-4">
+                {/* Form Title */}
+                <h2 className="text-2xl font-semibold text-white mb-1">
+                  {form.title}
+                </h2>
+                {/* Form Description */}
+                <p className="text-sm text-gray-400">{form.description}</p>
               </div>
-              <div className="flex gap-3">
+
+              {/* Action Buttons */}
+              <div className="flex space-x-4">
                 <button
                   onClick={() => copyToClipboard(form._id)}
-                  className="p-2 text-gray-500 hover:text-gray-700 relative"
+                  className="text-gray-400 hover:text-teal-400 transform hover:scale-110 transition duration-300"
                   title="Copy form link"
                 >
-                  <Copy size={20} />
-                  {copySuccess === form._id && (
-                    <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm text-green-500 whitespace-nowrap">
-                      Link copied!
-                    </span>
-                  )}
+                  <Copy size={24} />
                 </button>
                 <Link
                   to={`/form/${form._id}`}
-                  className="p-2 text-blue-500 hover:text-blue-700"
+                  className="text-blue-400 hover:text-blue-500 transform hover:scale-110 transition duration-300"
                   title="Open form"
                 >
-                  <ExternalLink size={20} />
+                  <ExternalLink size={24} />
                 </Link>
                 <button
                   onClick={() => handleDelete(form._id)}
-                  className="p-2 text-red-500 hover:text-red-700"
+                  className="text-red-400 hover:text-red-500 transform hover:scale-110 transition duration-300"
                   title="Delete form"
                 >
-                  <Trash2 size={20} />
+                  <Trash2 size={24} />
                 </button>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
 
-        {forms.length === 0 && (
-          <div className="text-center py-12 bg-gray-50 rounded-lg">
-            <p className="text-gray-600">No forms created yet.</p>
-            <Link
-              to="/create"
-              className="text-blue-500 hover:text-blue-600 inline-flex items-center gap-2 mt-4"
-            >
-              <Plus size={20} />
-              Create your first form
-            </Link>
-          </div>
-        )}
+          {/* Empty State */}
+          {forms.length === 0 && (
+            <div className="text-center py-16 bg-gray-800 rounded-xl shadow-lg">
+              <p className="text-lg text-gray-400 mb-4">
+                No forms created yet.
+              </p>
+              <Link
+                to="/create"
+                className="px-5 py-3 bg-gradient-to-r from-teal-400 to-blue-600 text-white font-semibold rounded-lg hover:shadow-md transform hover:scale-105 transition duration-300 flex items-center gap-3"
+              >
+                <Plus size={24} />
+                Create your first form
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
