@@ -76,11 +76,11 @@ export default function ClozeRenderer({ question }) {
       >
         {/* Render the Question Text with Blanks */}
         <div className="prose max-w-none">
-          <p className="text-lg leading-relaxed">{renderTextWithBlanks()}</p>
+          <p className="text-lg text-white leading-relaxed">{renderTextWithBlanks()}</p>
         </div>
 
         {/* Render Draggable Words */}
-        <div className="flex flex-wrap gap-2 p-4 bg-gray-50 rounded-lg">
+        <div className="flex flex-wrap gap-2 p-4 bg-gray-400 rounded-lg">
           {unusedWords.map((word) => (
             <DraggableWord key={word} id={word}>
               {word}
@@ -139,8 +139,8 @@ function DroppableBlank({ id, value }) {
         isOver
           ? "border-blue-500 bg-blue-100"
           : value
-          ? "border-green-500 bg-green-50"
-          : "border-gray-300 bg-gray-50"
+          ? "border-green-500 bg-green-500"
+          : "border-gray-300 bg-gray-500"
       }`}
     >
       {value || "_____"}

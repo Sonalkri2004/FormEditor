@@ -92,10 +92,12 @@ export function FormRenderer() {
   if (!form) return null;
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-2xl font-bold mb-2">{form.title}</h1>
-        <p className="text-gray-600 mb-6">{form.description}</p>
+    <div className="max-w-4xl  mx-auto  p-6">
+      
+      <div className="bg-gray-800 rounded-lg shadow-lg p-6">
+        
+        <h1 className="text-2xl text-white font-bold mb-2">{form.title}</h1>
+        <p className="text-gray-100 mb-6">{form.description}</p>
 
         {form.headerImage && (
           <img
@@ -108,7 +110,7 @@ export function FormRenderer() {
         <form onSubmit={handleSubmit} className="space-y-8">
           {form.questions.map((question) => (
             <div key={question.id} className="border rounded-lg p-6">
-              <h2 className="text-xl font-semibold mb-4">{question.title}</h2>
+              <h2 className="text-xl text-white font-semibold mb-4">{question.title}</h2>
               {question.imageUrl && (
                 <img
                   src={question.imageUrl}
@@ -149,7 +151,7 @@ export function FormRenderer() {
 
           <button
             type="submit"
-            className="w-full px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 font-semibold transition-colors"
+            className="w-full px-6 py-3 bg-gradient-to-r from-teal-400 to-blue-600 text-white rounded-lg font-semibold transition-colors"
           >
             Submit
           </button>
